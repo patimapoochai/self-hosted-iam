@@ -1,7 +1,7 @@
 # Self-hosted IAM stack
 This is a simple IAM platform for Kubernetes to add SSO capability to home lab services using OIDC, OAuth, and LDAP protocols. The stack composes of LLDAP as the base infrastructure layer serving as a centralized LDAP identity repository. Keycloak is deployed to implement application-layer features like SSO redirection using the OAuth/OIDC authentication flow. The identity information in LLDAP is synchronized to Keycloak using read-only user federation.
 
-See more details in my blog post: __
+See more details in my [blog post](https://dev.to/patimapoochai/building-a-self-hosted-iam-platform-to-add-sso-to-my-home-lab-5a2n).
 
 ![](./diagrams/thumbnail.png)
 
