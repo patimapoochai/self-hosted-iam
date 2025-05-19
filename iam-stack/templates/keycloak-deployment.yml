@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-keycloak
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-keycloak
+        image: docker.io/keycloak/keycloak:26.2
+        args: ["start-dev"]
+        ports:
+        - containerPort: 8080
+        env:
+        - name: KC_BOOTSTRAP_ADMIN_USERNAME
+          value: {{ .Values.keycloak.admin_username }}
+        - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+          value: {{ .Values.keycloak.admin_password }}

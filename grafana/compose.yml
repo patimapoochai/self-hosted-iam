@@ -1,0 +1,18 @@
+# expose port 30007
+# has to change grafana's port to match 
+# since this is a test container, I can use whatever domain name and port I want
+# mount the following:
+# - /var/lib/grafana
+# - /usr/share/grafana/conf
+---
+version: "3"
+services:
+  syncthing:
+    image: grafana/grafana-oss:11.5.2
+    container_name: iam-test-grafana
+    hostname: iam-test-grafana
+    volumes:
+      - ./data:/var/lib/grafana:Z
+      - ./config:/usr/share/grafana/conf:Z
+    ports:
+      - 3000:3000

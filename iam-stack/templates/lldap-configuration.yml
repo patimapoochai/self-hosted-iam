@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  UID: "1000"
+  GID: "1000"
+  TZ: {{ .Values.lldap.timezone }}
+  LLDAP_JWT_SECRET: {{ .Values.lldap.jwt_secret }}
+  LLDAP_KEY_SEED: {{ .Values.lldap.key_seed }}
+  LLDAP_LDAP_BASE_DN: {{ .Values.lldap.base_dn }}
+  LLDAP_LDAP_USER_PASS: {{ .Values.lldap.user_password }}
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: lldap-configuration

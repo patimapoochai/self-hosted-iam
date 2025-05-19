@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-lldap
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: lldap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lldap
+  template:
+    metadata:
+      labels:
+        app: lldap
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-lldap
+        image: lldap/lldap:2025-04-21-debian
+        ports:
+        - containerPort: 17170
+        - containerPort: 3890
+        volumeMounts:
+        - mountPath: /data
+          name: lldap-config
+        envFrom:
+        - configMapRef:
+            name: lldap-configuration
+      volumes:
+      - name: lldap-config
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-config
