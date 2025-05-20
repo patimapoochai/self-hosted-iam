@@ -94,7 +94,7 @@ drwxr-xr-x. 3        472        472 4096 May 13 20:02 config/
 
 Both folders should be owned by the UID of the user within the container in [Grafana's Dockerfile](https://github.com/grafana/grafana/blob/28b142e9513f587c4be62801794a8609037adbe8/Dockerfile#L138). In my case, the UID and GID should be `472`. If not, you can change the ownership of both folders:
 ```bash
-sudo chown -R 472:472 data/
+sudo chown -R 472:472 config/
 sudo chown -R 472:472 data/
 ```
 
